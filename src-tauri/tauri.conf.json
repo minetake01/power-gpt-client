@@ -1,0 +1,115 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "build": {
+    "beforeBuildCommand": "pnpm run build",
+    "beforeDevCommand": "pnpm run dev",
+    "devPath": "http://localhost:5173",
+    "distDir": "../build"
+  },
+  "package": {
+    "productName": "PowerGPTClient",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "pattern": {
+      "use": "isolation",
+      "options": {
+        "dir": "../build-isolation"
+      }
+    },
+    "allowlist": {
+      "fs": {
+        "all": true,
+        "scope": {
+          "allow": ["$APP/workspaces/**/*", "$APP/plugin/**/*"]
+        }
+      },
+      "window": {
+        "all": false
+      },
+      "shell": {
+        "all": false
+      },
+      "dialog": {
+        "all": false
+      },
+      "http": {
+        "all": true,
+        "scope": ["https://*"]
+      },
+      "notification": {
+        "all": true
+      },
+      "globalShortcut": {
+        "all": false
+      },
+      "os": {
+        "all": true
+      },
+      "path": {
+        "all": true
+      },
+      "protocol": {
+        "all": false
+      },
+      "process": {
+        "all": true
+      },
+      "clipboard": {
+        "all": true
+      },
+      "app": {
+        "all": false
+      }
+    },
+    "security": {
+      "csp": "default-src tauri://*"
+    },
+    "updater": {
+      "active": false
+    },
+    "bundle": {
+      "active": true,
+      "category": "Utility",
+      "shortDescription": "OpenAI GPT API Client",
+      "longDescription": "Client application for OpenAI GPT API with plug-in system.",
+      "copyright": "(c) 2023 みねたけ",
+      "publisher": "minetake",
+      "identifier": "power-gpt-client",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "resources": [],
+      "externalBin": [],
+      "targets": "all",
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      },
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      },
+      "deb": {
+        "depends": []
+      }
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 600,
+        "resizable": true,
+        "title": "PowerGPTClient",
+        "width": 800
+      }
+    ]
+  }
+}
